@@ -1,6 +1,6 @@
 const express = require('express');
 const sequelize = require('./config/db.js');
-const Ingrediets = require('./models/Ingredient.js');
+const Recipe = require('./models/Recipe.js');
 
 
 const app = express();
@@ -13,7 +13,10 @@ app.listen(3000, () => {
     console.log('Servidor Ouvindo na porta 3000');
 });
 
-
+app.post('receitas/adicionar', async (req, res) => {
+    const recipe = Recipe.create(req.body);
+    res.status(200).json(recipe);
+});
 
 
 

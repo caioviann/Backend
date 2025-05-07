@@ -6,16 +6,16 @@ const Recipe = sequelize.define('Recipe', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    prep_time_minutes: DataTypes.INTEGER,
-    cook_time_minutes: DataTypes.INTEGER,
+    prepTimeMinutes: DataTypes.INTEGER,
+    cookTimeMinutes: DataTypes.INTEGER,
     servings: DataTypes.INTEGER,
     difficulty: DataTypes.STRING,
-    calories_per_serviving: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER,
+    caloriesPerServing: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
     image: DataTypes.STRING,
     rating: DataTypes.INTEGER,
-    review_count: DataTypes.INTEGER,
-    meal_types: DataTypes.INTEGER
+    reviewCount: DataTypes.INTEGER,
+    mealTypes: DataTypes.JSON
 })
 
 module.exports = Recipe;
