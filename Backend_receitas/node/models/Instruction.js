@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../database/db');
+const sequelize = require('../config/db');
 const Recipe = require('./Recipe');
 
 const Instruction = sequelize.define('Instruction', {
@@ -11,7 +11,7 @@ const Instruction = sequelize.define('Instruction', {
 
 Instruction.belongsTo(Recipe, {
     foreignKey: 'recipe_id',
-    onDelete: 'CASDADE'
+    onDelete: 'CASCADE'
 });
 Recipe.hasMany(Instruction, {
     foreignKey: 'recipe_id'

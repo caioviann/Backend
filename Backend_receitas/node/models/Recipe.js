@@ -15,7 +15,7 @@ const Recipe = sequelize.define('Recipe', {
     image: DataTypes.STRING,
     rating: DataTypes.INTEGER,
     reviewCount: DataTypes.INTEGER,
-    mealTypes: DataTypes.JSON
+    mealType: DataTypes.JSON
 })
 
 module.exports = Recipe;
