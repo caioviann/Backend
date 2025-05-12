@@ -95,7 +95,6 @@ const put = async (req, res) => {
 
 const post =  async (req, res) => {
     try {
-        console.log('copooo:', req.body);
       const {
         name,
         prepTimeMinutes,
@@ -131,19 +130,16 @@ const post =  async (req, res) => {
   // não ta adicionando ingreentes
       if (ingredients?.length) {
         const ingredientData = ingredients.map(name => ({ name, recipeId: recipe.id }));
-        console.log('Dados de ingredientes:', ingredientData);
         await Ingredient.bulkCreate(ingredientData);
       }
   
       if (instructions?.length) {
         const instructionData = instructions.map(description => ({ description, recipeId: recipe.id }));
-        console.log('Dados de instruções:', instructionData);
         await Instruction.bulkCreate(instructionData);
       }
   
       if (tags?.length) {
         const tagData = tags.map(name => ({ name, recipeId: recipe.id }));
-        console.log('Dados de tags:', tagData);
         await Tag.bulkCreate(tagData);
       }
   
