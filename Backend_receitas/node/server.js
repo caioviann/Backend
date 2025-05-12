@@ -1,9 +1,10 @@
 const express = require('express');
-const routes = require('./routes/RecipeRouter.js');
+const router = require('./routes/Router.js');
 const sequelize = require('./config/db');
 
 const app = express();
-app.use(routes);
+app.use(express.json());
+app.use(router);
 
   
 app.listen(3000, async () => {

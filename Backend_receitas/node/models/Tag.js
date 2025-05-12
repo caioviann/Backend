@@ -9,11 +9,11 @@ const Tag = sequelize.define('Tag', {
 });
 
 Tag.belongsTo(Recipe, {
-    foreignKey: 'recipe_id',
+    foreignKey: 'recipeId',
     onDelete: 'CASCADE'
 });
 Recipe.hasMany(Tag, {
-    foreignKey: 'recipe_id'
+    foreignKey: 'recipeId'
 });
 
 module.exports = Tag;

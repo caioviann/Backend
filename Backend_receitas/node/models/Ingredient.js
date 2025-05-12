@@ -10,11 +10,11 @@ const Ingredient = sequelize.define('Ingredient', {
 });
 
 Ingredient.belongsTo(Recipe, {
-    foreignKey: 'recipe_id',
+    foreignKey: 'recipeId',
     onDelete: 'CASCADE'
 });
 Recipe.hasMany(Ingredient, {
-    foreignKey: 'recipe_id'
+    foreignKey: 'recipeId'
 })
 
 module.exports = Ingredient;
