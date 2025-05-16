@@ -10,5 +10,6 @@ routes.get('/receitas', recipeController.getAll);
 routes.get('/receitas/:id', recipeController.getById);
 routes.put('/receitas/:id', recipeController.put);
 routes.post('/receitas/adicionar', recipeController.post);
+routes.delete('/receitas/:id', recipeController.deleteRecipe);
 
 module.exports = routes;

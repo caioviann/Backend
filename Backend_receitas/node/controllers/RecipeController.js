@@ -150,9 +150,21 @@ const post =  async (req, res) => {
     }
   };
 
+  const deleteRecipe = async (req, res) =>{
+    try{
+      const id = req.params.id;
+      const recipe = await Recipe.findByPk(id);
+      recipe.destroy({ where: { id: id}});
+      res.status(200).send({ message: "Receita delatada com sucesso"});
+    }catch(error){
+      res.status(500).send({ message: "Erro ao tentar deletar o Receita"});
+    }
+  };
+
 module.exports = {
     getAll,
     getById,
     put,
-    post
+    post,
+    deleteRecipe
 };
