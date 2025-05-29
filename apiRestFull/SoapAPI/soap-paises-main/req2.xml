@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://ads.sj.ifsc.edu.br/pbe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:somaRequest>
+         <gs:i1>10</gs:i1>
+         <gs:i2>20</gs:i2>
+      </gs:somaRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

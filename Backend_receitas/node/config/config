@@ -1,0 +1,4 @@
+<script>start("/Users/caiohenrique/Documents/backend/Backend/Backend_receitas/node/config/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("config","config",0,0,"0 B",1747357493,"5/15/25, 10:04:53 PM");</script>
+<script>addRow("db.js","db.js",0,210,"210 B",1746643205,"5/7/25, 3:40:05 PM");</script>
