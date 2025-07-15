@@ -1,3 +1,4 @@
+import NotFound from "../errors/NotFound.js";
 import books from "../models/Book.js";
 
 class BookController {
@@ -17,8 +18,13 @@ class BookController {
       const id = req.params.id;
 
       const resultBook = await books.findById(id);
+      if(resultBook !== null){
+        res.status(200).send(resultBook);
+      } else {
+        next(new NotFound("- Id do livro não encontrado"));
+      }
 
-      res.status(200).send(resultBook);
+     
     } catch (err) {
       next(err);
     }
@@ -40,9 +46,13 @@ class BookController {
     try {
       const id = req.params.id;
 
-      await books.findByIdAndUpdate(id, {$set: req.body});
+      const result = await books.findByIdAndUpdate(id, {$set: req.body});
+      if(result !== null){
+        res.status(200).send({message: "Livro atualizado com sucesso"});
+      } else {
+        next(new NotFound("- Id do livro não encontrado"));
+      }
 
-      res.status(200).send({message: "Livro atualizado com sucesso"});
     } catch (err) {
       next(err);
     }
@@ -52,9 +62,13 @@ class BookController {
     try {
       const id = req.params.id;
 
-      await books.findByIdAndDelete(id);
+      const result = await books.findByIdAndDelete(id);
+      if(result !== null){
+        res.status(200).send({message: "Livro removido com sucesso"});
+      } else{
+        next(new NotFound("- Id do livro não encontrado"));
+      }
 
-      res.status(200).send({message: "Livro removido com sucesso"});
     } catch (err) {
       next(err);
     }

@@ -10,11 +10,21 @@ const bookSchema = new mongoose.Schema(
     autor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "autores",
-      required: [true, "O nome do(a) autor(a) é obrigatória"]},
+      required: [true, "O nome do(a) autor(a) é obrigatória"]
+    },
     publisher: {
       type: String,
-      required: [true, "A editora é obrigatória"]},
-    numberPages: {type: Number}
+      required: [true, "A editora é obrigatória"],
+      enum: {
+        values: ["Casa Do código", "Alura"],
+        message: "A editora {VALUE} não é um valor permitido."
+      }
+    },
+    numberPages: {
+      type: Number,
+      min: [10, "O número de página deve estar entre 10 e 5000. Valor fornecido: {VALUE}"],
+      max: [5000, "O número de páginas deve estar entre 10 e 5000. Valor fornecido: {VALUE}"]
+    }
   }
 );
 
