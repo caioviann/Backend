@@ -74,11 +74,15 @@ class BookController {
     }
   };
 
-  static bookListByPublisher = async (req, res, next) => {
+  static bookListByFilter = async (req, res, next) => {
     try {
-      const publisher = req.query.publisher;
+      const { publisher, title } = req.query;
 
-      const resultBook = await books.find({"publisher": publisher});
+      const search = {};
+      if (publisher) search.publisher = publisher;
+      if(title) search.title = title;
+
+      const resultBook = await books.find(search);
 
       res.status(200).send(resultBook);
     } catch (err) {
