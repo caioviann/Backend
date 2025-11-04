@@ -4,24 +4,11 @@ import { authors, books } from "../models/index.js";
 class BookController {
   static bookList = async (req, res, next) => {
     try {
-      let { limit = 5, page = 1 } = req.query;
+      const searchbooks = books.find();
 
-      limit = parseInt(limit);
-      page = parseInt(page);
-      if(limit > 0 && page > 0) {
-        const resultBook = await books
-          .find()
-          .skip((page - 1) * limit)
-          .limit(limit)
-          .populate("autor")
-          .exec();
+      req.result = searchbooks;
 
-        res.status(200).json(resultBook);
-      }else{
-        next(new IncorretRequest);
-      }
-
-      
+      next();
     } catch (err) {
       next(err);
     }
@@ -89,9 +76,13 @@ class BookController {
       const search = await processSearch(req.query);
 
       if (search !== null) {
-        const resultBook = await books.find(search).populate("autor");
+        const resultBook = books
+          .find(search)
+          .populate("autor");
 
-        res.status(200).send(resultBook);
+        req.result = resultBook;
+
+        next();
       } else {
         res.status(200).send("num tem esse autor :(");
       }
